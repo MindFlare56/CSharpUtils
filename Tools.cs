@@ -3,7 +3,6 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
-using System.Windows.Forms;
 
 namespace CSharpUtils
 {
@@ -11,13 +10,13 @@ namespace CSharpUtils
     static class Tools
     {
 
-        public static void removeRandomElementFromList<T>(List<T> list, Random random)
+        public static void RemoveRandomElementFromList<T>(List<T> list, Random random)
         {
             int randomNumber = random.Next(0, list.Count);
             list.RemoveAt(randomNumber);
         }
 
-        public static void removeRandomElementsFromList<T>(List<T> list, Random random, int occurence)
+        public static void RemoveRandomElementsFromList<T>(List<T> list, Random random, int occurence)
         {
             for (int i = 0; i < occurence; ++i)
             {
@@ -26,7 +25,7 @@ namespace CSharpUtils
             }
         }
 
-        public static void removeRandomElementsFromListUntil<T>(List<T> list, Random random, int size)
+        public static void RemoveRandomElementsFromListUntil<T>(List<T> list, Random random, int size)
         {
             if (list.Count > size)
             {
@@ -36,17 +35,9 @@ namespace CSharpUtils
                     list.RemoveAt(randomNumber);
                 }
             }
-        }
+        }       
 
-        public static void addListToComboBox<T>(ComboBox comboBox, List<T> list)
-        {
-            foreach (T element in list)
-            {
-                comboBox.Items.Add(element);
-            }
-        }
-
-        public static void addAll<T>(List<T> from, List<T> to)
+        public static void AddAll<T>(List<T> from, List<T> to)
         {
             List<T> tempList = new List<T>();
             foreach (T t in from)
@@ -55,7 +46,7 @@ namespace CSharpUtils
             }
         }
 
-        public static void shuffle<T>(this IList<T> list, Random random)
+        public static void Shuffle<T>(this IList<T> list, Random random)
         {
             int n = list.Count;
             while (n > 1)
@@ -68,12 +59,12 @@ namespace CSharpUtils
             }
         }
 
-        public static bool equalsIgnoreCase(String string1, String string2)
+        public static bool EqualsIgnoreCase(String string1, String string2)
         {
             return string.Equals(string1, string2, StringComparison.OrdinalIgnoreCase);
         }
 
-        public static void createFile(String path, String text_info)
+        public static void CreateFile(String path, String text_info)
         {
             try
             {
@@ -101,7 +92,7 @@ namespace CSharpUtils
             }
         }
 
-        public static void createFile(String path)
+        public static void CreateFile(String path)
         {
             try
             {
@@ -124,7 +115,7 @@ namespace CSharpUtils
             }
         }
 
-        public static void writeInFile(String path, String text)
+        public static void WriteInFile(String path, String text)
         {
             using (StreamWriter writetext = new StreamWriter(path))
             {
@@ -132,7 +123,7 @@ namespace CSharpUtils
             }
         }
 
-        public static void rewriteInFile(String path, String text)
+        public static void RewriteInFile(String path, String text)
         {
 
             Tools.writeInFile(path, readInFile(path) + text);
@@ -146,12 +137,12 @@ namespace CSharpUtils
             }
         }
 
-        public static bool fileExist(String path)
+        public static bool FileExist(String path)
         {
             return File.Exists(path);
         }
 
-        public static List<T> readJsonInFile<T>(String path)
+        public static List<T> ReadJsonInFile<T>(String path)
         {
             using (StreamReader r = new StreamReader(path))
             {
@@ -161,7 +152,7 @@ namespace CSharpUtils
             }
         }
 
-        public static void writeJsonInFile<T>(String path, List<T> data)
+        public static void WriteJsonInFile<T>(String path, List<T> data)
         {
             string json = JsonConvert.SerializeObject(data.ToArray());
             writeInFile(path, json);
